@@ -1,4 +1,8 @@
+#include <string>
+#include <vector>
+
 #include "Trie.hpp"
+#include "Game.hpp"
 
 // TrieNode
 TrieNode::TrieNode() {
@@ -31,7 +35,7 @@ bool Trie::insert(Game* game) {
         return false;
     }
 
-    std::string key = toSearchKey(game->title);
+    std::string key = toSearchKey(game->getTitle());
 
     TrieNode* current = root;
     for (char c : key) {
@@ -85,7 +89,7 @@ std::vector<Game*> Trie::autocomplete(std::string prefix, int k) {
     getGames(current, results);
     sortResults(results);
     
-    if (results.size() > k) {
+    if ((int)results.size() > k) {
         results.resize(k);
     }
 
@@ -123,10 +127,10 @@ void Trie::sortResults(std::vector<Game*>& games) {
     for (int i = size - 1; i > 0; i--) {
         for (int j = 0; j < i; j++) {
             bool swap = (
-                (games[j]->popularity < games[j + 1]->popularity) || 
+                (games[j]->getPopularity() < games[j + 1]->getPopularity()) || 
                 (
-                    (games[j]->popularity == games[j + 1]->popularity) && 
-                    (toSearchKey(games[j]->title) > toSearchKey(games[j + 1]->title))
+                    (games[j]->getPopularity() == games[j + 1]->getPopularity()) && 
+                    (toSearchKey(games[j]->getTitle()) > toSearchKey(games[j + 1]->getTitle()))
                 )
             );
             

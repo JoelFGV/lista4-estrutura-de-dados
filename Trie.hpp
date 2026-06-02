@@ -8,6 +8,7 @@
 
 const int ALPHABET_SIZE = 36; // [0-9] + [a-z]
 
+// TrieNode
 class TrieNode {
 
 public:
@@ -20,6 +21,9 @@ public:
     ~TrieNode();
 };
 
+
+
+// Trie
 class Trie {
 
 private:
