@@ -1,8 +1,7 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-    cout << "main" << endl;
+    std::cout << "main" << std::endl;
 
     return 0;
 }

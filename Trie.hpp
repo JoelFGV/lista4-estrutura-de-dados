@@ -6,8 +6,7 @@
 
 #include "Game.hpp"
 
-
-const int ALPHABET_SIZE = 26;
+const int ALPHABET_SIZE = 36; // [0-9] + [a-z]
 
 class TrieNode {
 
@@ -41,6 +40,8 @@ public:
     void sortResults(std::vector<Game*>& games);
 
     // Outros métodos auxiliares, se necessário
+    int getIndex(char c);
+    void getGames(TrieNode* node, std::vector<Game*>& results);
 };
 
 #endif
